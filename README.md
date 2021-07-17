@@ -24,4 +24,24 @@ Suppose you have $10 on hand, and there is a deck of cards in front of you. You 
 
 Now, let's model this game using MDP.
 
-There are two states in this game, which are in and out. The in state means that you are still in the game, and this happens when you flip a red heart card, or when you just started the game. The out state means that you flipped a blue sword card and can no longer play this game.
+## States
+
+There are two states in this game, which are in and out. The in state means that you are still in the game, and this happens when you flip a red heart card, or when you just started the game. The out state means that you flipped a blue sword card and can no longer play this game, or you have decided to quit the game.
+
+Let's use circles to represent states.
+
+<img src="docs/imgs/in_out_states.png" width="500" />
+
+## Actions
+
+When you are at a state, you may have some available actions to perform. In MDP, you need to perform an action in a state to transit to another state. If a state has no available actions, you cannot transit to other states because you cannot do anything. As a result, a state with no actions is called **absorbing state** because it absorbs you and will not let you go.
+
+When you are in the in state, you have two available:
+
+- play
+
+- quit
+
+However, when you are in the out state, you do not have any available action. Therefore, we can say out state is an absorbing state or end state.
+
+<img src="docs/imgs/in_out_actions.png" width="500" />
