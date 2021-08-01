@@ -67,3 +67,35 @@ We represent rewards with its transition rate together using a bracket. For exam
 Now, we have a MDP model for this game. We want to find the optimal policy $\pi_{opt}$ that tells us the optimal action for each state. The policy $\pi_{opt}$ is a mapping between states and actions. Given a state to the policy $\pi$, it returns an optimal action for the given state.
 
 We can use value iteration algorithm to find the optimal policy $\pi_{opt}$.
+
+# Value Iteration
+
+Value iteration is an algorithm to iteratively compute the value of each state. To understand what is an expected value, let's discuss some concepts first.
+
+## Utility
+
+The utility is the sum of reward of a policy. For example, if your policy is always playing the game until you flip a blue sword card, one of your game may be like this:
+
+[in; play, 5, in; play, 5, in; play, -20, end]
+
+The utility of the policy for **this game** is: 
+
+5 + 5 - 20 = -10
+
+You kept playing the game, and you flipped a red heart card for the first two rounds. However, you were not so lucky for the third round because you flipped a blue sword card. Therefore, you paid a fine, and the game is ended.
+
+## Discounted Factor
+
+The discounted factor is a ratio to discount the future rewards. For example, it is better to get $100 today than next year because I can spend that money right now. The same concept can be applied to the utility. If we want to get more utility as early as possible, we can apply the discounted factor.
+
+For instance, if the next reward is only worth 80% of the today's reward, the discounted factor is 0.8. By applying the discounted factor to the example above, we will have this utility:
+
+5 + (0.8)*5 + ((0.8)^2)*5 + ((0.8^3))(-20) = 1.96
+
+Now the utility is different because we care more about getting rewards as early as possible.
+
+## Value
+
+Value is the expected utility of a policy. For Markov Decision Process model, we know that each action will lead to some possible outcomes, and those outcomes are determined by chance. Therefore, for each different game of the same policy, you would get different amount of utility.
+
+You can compute an expected utility of the policy if you know the transition rates of each outcome when an action is taken. The expected utility is called value.
