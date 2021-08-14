@@ -68,10 +68,6 @@ Now, we have a MDP model for this game. We want to find the optimal policy $\pi_
 
 We can use value iteration algorithm to find the optimal policy $\pi_{opt}$.
 
-# Value Iteration
-
-Value iteration is an algorithm to iteratively compute the value of each state. To understand what is an expected value, let's discuss some concepts first.
-
 ## Utility
 
 The utility is the sum of reward of a policy. For example, if your policy is always playing the game until you flip a blue sword card, one of your game may be like this:
@@ -99,3 +95,21 @@ Now the utility is different because we care more about getting rewards as early
 Value is the expected utility of a policy. For Markov Decision Process model, we know that each action will lead to some possible outcomes, and those outcomes are determined by chance. Therefore, for each different game of the same policy, you would get different amount of utility.
 
 You can compute an expected utility of the policy if you know the transition rates of each outcome when an action is taken. The expected utility is called value.
+
+# Value Iteration
+
+Value iteration is an algorithm to iteratively compute the value of each state. The basic idea of value iteration is to iteratively update the value of each state. We initialize the value of each state to be a random number, usually zero. Then, we iterate each state. For each state, we iterate its actions. Each action has one or more transition rates and successor states. We calculate the value of the action using the formula mentioned above:
+
+```
+transition rate * transition reward + discount factor * value of next state
+```
+
+Note that the value of next state comes from our value table for each state. Initially they are all zero. However, they will be updated iteratively through the process.
+
+After we iterate all actions and get their values, we choose the action that will yield the highest value. Then,
+
+- Store the action in the policy table for the current state. 
+
+- Store the value in the value table for this state as the current estimated optimal value. We will use this value when we need the value of next state.
+
+For the value iteration algorithm code, please check this [MDP.py](./MDP.py).
